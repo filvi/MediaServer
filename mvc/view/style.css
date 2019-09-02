@@ -1,0 +1,143 @@
+:root{
+
+    /* colors */
+    /* primary */
+    --light-p: black;
+    --dark-p: white;
+    
+    /* secondary */
+    --light-s: white;
+    --dark-s: black;
+
+
+
+    /* spacing */
+    --space-1: 1.5rem;
+    --space-2: calc(1.5rem * 1.5);
+    --space-3: calc(1.5rem * 1.5 * 1.5);
+    --space-4: calc(1.5rem * 1.5 * 1.5 * 1.5);
+
+    /* font  */
+    --roboto: 'Roboto Slab', serif;
+    --oswald: 'Oswald', sans-serif;
+}
+*{
+    /* global reset */
+    margin:0;
+    padding:0;
+    box-sizing: border-box!important;
+    line-height: 1.5rem;
+    font-size: 1rem;
+}
+
+
+
+a{
+    color:var(--light-p);
+    text-decoration: none;
+}
+h1{
+    color: var(--light-p);
+}
+
+
+aside{
+    border: 1px solid gray;
+    width: 15vw;
+    border-right: 6px dashed var(--light-p);
+}
+
+main{
+
+    margin-left:15vw;
+    width: 85vw;
+}
+
+aside, main {
+    padding:var(--space-2);
+    position:fixed;
+    height:100vh;
+}
+
+
+
+.logo{
+    display: block;
+}
+nav{
+    font-family: var(--oswald);
+    font-family: 500;
+    margin-top: var(--space-2);
+}
+
+
+
+
+
+.season{
+    border-bottom: 1px dashed var(--light-p);
+}
+
+.stack{
+    display: block;
+}
+
+
+
+/* tv serie */
+
+
+
+.series_episode{
+    padding-left: calc(var(--space-1) / 2);
+    border-bottom: 1px solid transparent;
+}
+
+.series_season{
+    padding: calc(var(--space-1) / 2) ;
+    position: relative;
+}
+
+
+.series_season:hover, .series_episode:hover{
+    background-color: var(--light-p);
+    color: var(--dark-p);
+}
+
+.series_season:hover::before, .series_episode:hover::before{
+    color: var(--light-p);
+}
+.episodes{
+    margin-left: calc(var(--space-1) /  2);
+}
+
+
+
+div[data-collapsed], div[data-completed]{
+    position: relative;
+}
+
+div[data-watched]::before, div[data-completed]::before{
+    content:"\f00c";
+    font-family: "FontAwesome";
+    font-weight:lighter;
+
+}
+
+div[data-watched="yes"]::before, div[data-completed="yes"]::before{
+    color: var(--light-p);
+}
+div[data-watched="no"]::before, div[data-completed="no"]::before{
+    color: var(--dark-p);
+}
+div[data-watched="yes"]:hover::before, div[data-completed="yes"]:hover::before{
+    color: var(--dark-p);
+}
+div[data-watched="no"]:hover::before, div[data-completed="no"]:hover::before{
+    color: var(--light-p);
+}
+
+div[data-visible="no"]{
+    display:none;
+}
+
