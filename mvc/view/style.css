@@ -1,13 +1,13 @@
-:root{
+:root {
 
     /* colors */
     /* primary */
-    --light-p: black;
-    --dark-p: white;
-    
+    --primary-light: black;
+    --secondary-light: white;
+
     /* secondary */
-    --light-s: white;
-    --dark-s: black;
+    --primary-dark: white;
+    --secondary-dark: black;
 
 
 
@@ -21,50 +21,55 @@
     --roboto: 'Roboto Slab', serif;
     --oswald: 'Oswald', sans-serif;
 }
-*{
+
+* {
     /* global reset */
-    margin:0;
-    padding:0;
-    box-sizing: border-box!important;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box !important;
     line-height: 1.5rem;
     font-size: 1rem;
 }
 
 
 
-a{
-    color:var(--light-p);
+a {
+    color: var(--primary-light);
     text-decoration: none;
 }
-h1{
-    color: var(--light-p);
+
+h1 {
+    color: var(--primary-light);
 }
 
 
-aside{
-    border: 1px solid gray;
+aside {
     width: 15vw;
-    border-right: 6px dashed var(--light-p);
+    border-right: 1px dashed var(--primary-light);
+    overflow-y: scroll;
+    padding: var(--space-1);
 }
 
-main{
-
-    margin-left:15vw;
+main {
+    margin-left: 15vw;
     width: 85vw;
+    padding: var(--space-1);
 }
 
-aside, main {
-    padding:var(--space-2);
-    position:fixed;
-    height:100vh;
+aside,
+main {
+    background: var(--secondary-light);
+    position: fixed;
+    height: 100vh;
 }
 
 
 
-.logo{
+.logo {
     display: block;
 }
-nav{
+
+nav {
     font-family: var(--oswald);
     font-family: 500;
     margin-top: var(--space-2);
@@ -73,71 +78,141 @@ nav{
 
 
 
-
-.season{
-    border-bottom: 1px dashed var(--light-p);
-}
-
-.stack{
-    display: block;
-}
-
-
-
-/* tv serie */
-
-
-
-.series_episode{
-    padding-left: calc(var(--space-1) / 2);
+.series_episode {
     border-bottom: 1px solid transparent;
+    white-space: nowrap;
+
 }
 
-.series_season{
-    padding: calc(var(--space-1) / 2) ;
+
+.series_episode:hover {
+    cursor: pointer;
+}
+
+/* .series_episode:hover{
+    transform:translateX()
+} */
+
+
+
+.series_season {
+    padding: calc(var(--space-1) / 2) 0;
+    margin-bottom: calc(var(--space-1) / 2);
+    position: relative;
+    border: 1px dashed var(--primary-light);
+    text-transform: uppercase;
+    font-size: 110%;
+
+}
+
+
+.series_season:hover,
+.series_episode:hover {
+    background-color: var(--primary-light);
+    color: var(--secondary-light);
+}
+
+.series_season:hover::before,
+.series_episode:hover::before {
+    color: var(--primary-light);
+}
+
+
+[data-collapsed="yes"] {
+    background: var(--primary-light);
+    color: var(--secondary-light);
+}
+
+[data-collapsed],
+[data-completed] {
     position: relative;
 }
 
+[data-watched]::before,
+[data-completed]::before {
+    content: "\f111";
+    font-weight: 900;
+    font-family: 'Font Awesome\ 5 Free';
+    padding: 0 5px;
 
-.series_season:hover, .series_episode:hover{
-    background-color: var(--light-p);
-    color: var(--dark-p);
-}
-
-.series_season:hover::before, .series_episode:hover::before{
-    color: var(--light-p);
-}
-.episodes{
-    margin-left: calc(var(--space-1) /  2);
 }
 
 
+[data-watched="yes"]::before,
 
-div[data-collapsed], div[data-completed]{
+[data-completed="yes"]::before {
+    color: var(--primary-light);
+}
+
+
+[data-watched="no"]::before,
+
+[data-completed="no"]::before {
+    content: "\f111";
+    font-family: 'Font Awesome\ 5 Free';
+    font-weight: 400;
+}
+
+
+[data-watched="yes"]:hover::before,
+
+[data-completed="yes"]:hover::before,
+
+[data-watched="no"]:hover::before,
+
+[data-completed="no"]:hover::before {
+    color: var(--secondary-light);
+}
+
+[data-visible="no"] {
+    display: none;
+}
+
+[data-collapsed="no"]::after {
+    content: "+";
+}
+
+[data-collapsed="yes"]::after {
+    content: "-";
+}
+
+[data-collapsed="yes"]::after,
+[data-collapsed="no"]::after {
+    color: var(--primary-light);
+    position: absolute;
+    top: calc(50% - calc(1.5rem / 2));
+    right: calc(var(--space-1) / 2);
+}
+
+[data-target] {
     position: relative;
+    color: var(--primary-light);
 }
 
-div[data-watched]::before, div[data-completed]::before{
-    content:"\f00c";
-    font-family: "FontAwesome";
-    font-weight:lighter;
-
+[data-target]>*:hover::after {
+    color: var(--light-d);
 }
 
-div[data-watched="yes"]::before, div[data-completed="yes"]::before{
-    color: var(--light-p);
-}
-div[data-watched="no"]::before, div[data-completed="no"]::before{
-    color: var(--dark-p);
-}
-div[data-watched="yes"]:hover::before, div[data-completed="yes"]:hover::before{
-    color: var(--dark-p);
-}
-div[data-watched="no"]:hover::before, div[data-completed="no"]:hover::before{
-    color: var(--light-p);
+.serie_name {
+    padding: var(--space-1) 0;
+    font-size: var(--space-2);
 }
 
-div[data-visible="no"]{
-    display:none;
+
+/* Track */
+::-webkit-scrollbar-track {
+    background-color: red;
 }
 
+/* Handle */
+::-webkit-scrollbar-thumb {
+    background-color: purple;
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+    background-color: green;
+}
+
+
+/* background: #c5af89; */
