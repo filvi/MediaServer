@@ -23,8 +23,8 @@ foreach ($series as $serie){
         echo<<<EOT
             <div class="season">
                 <!-- staating Season 1 -->
-                <a href="#" data-clicked="none" onclick="toggle_season('$serie_name.$season_name')" data-target="$serie_name.$season_name">
-                    <div class="series_season"  data-collapsed="no" data-completed="no">$season_name_spaced</div>
+                <a href="#" data-clicked="none"  onclick="toggle_season('$serie_name - $season_name_spaced')" data-target="$serie_name - $season_name_spaced">
+                    <div class="series_season" data-season="$serie_name - $season_name_spaced" data-collapsed="no" data-completed="no">$season_name_spaced</div>
                 </a>
                 <div class="episodes">
         EOT;
@@ -34,7 +34,7 @@ foreach ($series as $serie){
             $episode_name = str_replace('.', ' ', substr(substr($episode, $episode_index + 8),0,-4));
 
             echo<<<EOF
-                    <div class="series_episode" data-id="$serie_name.$season_name" data-watched="no" data-visible="no">$episode_name</div>
+                    <div class="series_episode" data-id="$serie_name - $season_name_spaced" data-name="$serie_name - $season_name_spaced - $episode_name" data-watched="no" data-visible="no">$episode_name</div>
                 EOF;
         }
                 echo "</div>";

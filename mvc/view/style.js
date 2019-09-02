@@ -1,5 +1,7 @@
 function toggle_season(season_name) {
+
     let episode = document.querySelectorAll(`[data-id="${season_name}"]`);
+    
     for (let i = 0; i < episode.length; i++) {
         let visible = episode[i].getAttribute("data-visible");
         if (visible === "no") {
@@ -8,18 +10,16 @@ function toggle_season(season_name) {
             episode[i].setAttribute("data-visible", "no");
         }
     };
-}
-
-
-
-
-
-window.onload = function (){
-    let episodes = document.querySelectorAll(".series_episode");
-    for (let i = 0 ; i < episodes.length; i++ ){
-        episodes[i].addEventListener("mouseenter", function () {
-        eWidth = episodes[i].offsetWidth;
-        console.log(eWidth);
-        });
+    
+    
+    let season = document.querySelector(`[data-season="${season_name}"]`);
+    let toggled = season.getAttribute("data-collapsed");
+    // console.log(season);
+    if (toggled === "no") {
+        season.setAttribute("data-collapsed", "yes")
+    } else {
+        season.setAttribute("data-collapsed", "no");
     }
+    season.setAttribute
 }
+
