@@ -47,7 +47,7 @@ h1 {
 
 aside {
     width: 15vw;
-   overflow-y: scroll;
+    overflow-y: scroll;
     padding: var(--space-1);
 }
 
@@ -72,8 +72,9 @@ main {
 
 nav {
     font-family: var(--oswald);
-    font-family: 500;
+    font-weight: bold;
     margin-top: var(--space-2);
+    text-transform: uppercase;
 }
 
 
@@ -237,3 +238,26 @@ nav {
 ::-webkit-scrollbar-corner {
     background-color: transparent;
 }
+
+main{
+    display:flex;
+    flex-direction: column;
+    align-items:center;
+    justify-content: center;
+}
+
+.btns{
+    display:flex;
+    flex-direction: row;
+
+}
+
+.darkbtn{
+    background-color: black;
+    color:white;
+    font-family: var(--oswald);
+    font-size: var(--space-2);
+    padding: var(--space-1);
+    margin: var(--space-1);;
+}
+

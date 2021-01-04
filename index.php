@@ -1,8 +1,6 @@
 <?php
 
-$dev = glob("Devel/*");
-$film = glob("Film/*");
-$series = glob("Serie.tv/*");
+$items = glob("Master/*");
 // var_dump($dev);
 // var_dump($film);
 // var_dump($serie);
