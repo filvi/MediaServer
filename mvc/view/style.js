@@ -198,6 +198,11 @@ function set_playback_speed(){
     vid.playbackRate = speed.value ;
 }
 
+
+function goto_note_time(s){
+    vid = document.getElementById('video');
+    vid.currentTime = s;
+}
 // Speed up EVERY VIDEO in the page
 // var vid = document.querySelectorAll("video");
 // vid.forEach((v)=>{v.playbackRate = 1})      // reset

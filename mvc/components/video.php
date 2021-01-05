@@ -21,8 +21,9 @@ $video=<<<VIDEO
     <a
         href="#" 
         id="go" 
-        class="oswald timebtn"
+        class="oswald timebtn tooltip"
     >    
+    <span class="tooltiptext">Time travel</span>
     go</a>
     <input 
         id="time"
@@ -30,22 +31,22 @@ $video=<<<VIDEO
         type="text" 
         value="00:00:00" 
     > 
-    <div id="total_time" class="timebtn total_time px-1" >
-        01:02:03
+    <div id="total_time" class="total_time px-1" >
+        00:00:00
     </div>
     
     <div class="timebtn ml-2 tooltip" onclick="time_travel(-10)">
         <span class="tooltiptext">-10s<br><i class="fas fa-arrow-circle-down"></i> key</span>
         <i class="fas fa-angle-double-left"></i>
     </div>
-    <div class="timebtn tooltip" onclick="time_travel(-5)">
+    <div class="timebtn tooltip mx1px" onclick="time_travel(-5)">
         <span class="tooltiptext">-5s<br><i class="fas fa-arrow-circle-left"></i> key</span>
         <i class="fas fa-angle-left"></i>
     </div>
     <div class="timeclock">
         <i class="far fa-clock"></i>
     </div>
-    <div class="timebtn tooltip" onclick="time_travel(5)">
+    <div class="timebtn tooltip mx1px" onclick="time_travel(5)">
         <span class="tooltiptext">+5s<br><i class="fas fa-arrow-circle-right"></i> key</span>
         <i class="fas fa-angle-right"></i>
     </div>
@@ -58,7 +59,8 @@ $video=<<<VIDEO
 <div class="btns">
 
     <!-- start of INPUT SPEED -->
-    <div id="speedbtn" class="speedbtn" onclick="set_playback_speed()">
+    <div id="speedbtn" class="speedbtn tooltip" onclick="set_playback_speed()">
+    <span class="tooltiptext">speed</span>
         <i class="fas fa-tachometer-alt"></i>
     </div>
     <input id="speed" class="speed" type="text"  value="1" > 
@@ -69,7 +71,7 @@ $video=<<<VIDEO
         <span class="tooltiptext">-0.5<br>speed</span>        
         <i class="fas fa-minus"></i>
     </div>
-    <div class="speedbtn tooltip" onclick="set_speed(1)">
+    <div  class="mx1px speedbtn tooltip" onclick="set_speed(1)">
         <span class="tooltiptext">1x<br>speed</span>    
         <i class="fas fa-undo"></i>
     </div>

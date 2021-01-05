@@ -57,7 +57,7 @@ aside {
     width: 15vw;
     float: right;
     padding: var(--space-1);
-    border-left:1px dashed black;
+    /* border-left:1px dashed black; */
     height: 100%;
 }
 
@@ -322,6 +322,18 @@ nav {
     border: 1px solid black;
     border-left: none;
 
+    width: 50px;
+    min-width: fit-content;
+    height: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    float: left;
+    border-radius: none !important;
+    font-family: var(--oswald);
+    text-transform: uppercase;
+    font-weight: bold;
+
 
 }
 
@@ -451,9 +463,7 @@ nav {
 }
 
 .note-item{
-    text-overflow: ellipsis;
-    white-space: nowrap;
-    overflow: hidden;
+    white-space: pre-wrap;
     padding: calc(var(--space-1) / 2);
     margin-bottom: calc(var(--space-1) / 2);
     border: 1px dashed black;
@@ -521,7 +531,7 @@ nav {
     /* Position the tooltip */
     position: absolute;
     top:-80px;
-    z-index: 1;
+    z-index: 999;
     line-height: 200%;
 
     border:1px dashed white;
@@ -533,3 +543,12 @@ nav {
 /* ========================================================================== */
 
 
+
+.mx1px{
+    margin-left: 5px; 
+    margin-right:5px;
+}
+
+.cursor-pointer:hover{
+    cursor: pointer;
+}
