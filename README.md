@@ -22,7 +22,7 @@ The structure is the following
 ```
 
 
-## Potential Issue (I need to fix)
+## Known Issue (currently fixing)
 1. The name of the file and the folders can't contain spaces or symbols now, maybe in the future version 
 2. Totally not responsive
 3. Weird behaviour when changing time somethimes (need to investigate this)
@@ -30,6 +30,7 @@ The structure is the following
 5. Don't keep track of viewed files and completed Topics
 6. I have to finish the init script to initialize the Database 
 7. Make an "installation" page for the first time one use it
+8. Add tooltip for Go and Speed
 
 
 

@@ -1,17 +1,6 @@
 :root {
 
-    /* colors */
-    /* primary */
-    --primary-light: black;
-    --secondary-light: white;
-
-    /* secondary */
-    --primary-dark: white;
-    --secondary-dark: black;
-
-    --sepia: #c5af89; 
-
-
+    --sepia: #c5af89;
 
     /* spacing */
     --space-1: 1.5rem;
@@ -33,19 +22,27 @@
     font-size: 1rem;
 }
 
-input:focus{
-    border-radius:none!important;
-    outline:none!important;
-    border-image:initial!important;
+::selection {
+    background: var(--sepia);
+}
+
+::-moz-selection {
+    background: var(--sepia);
+}
+
+input:focus {
+    border-radius: none !important;
+    outline: none !important;
+    border-image: initial !important;
 }
 
 a {
-    color: var(--primary-light);
+    color: black;
     text-decoration: none;
 }
 
 h1 {
-    color: var(--primary-light);
+    color: black;
 }
 
 
@@ -63,11 +60,17 @@ main {
 
 aside,
 main {
-    background: var(--secondary-light);
+    background: white;
     position: fixed;
     height: 100vh;
 }
 
+main {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
 
 
 .logo {
@@ -81,53 +84,53 @@ nav {
     text-transform: uppercase;
 }
 
+/* ========================================================================== */
 
 
 
+/* Sidebar Stuff ============================================================ */
 .courses_lecture {
     border-bottom: 1px solid transparent;
     white-space: pre-wrap;
-
 }
-
 
 .courses_lecture:hover {
     cursor: pointer;
 }
 
-/* .courses_lecture:hover{
-    transform:translateX()
-} */
 
-
-.courses_topic, .lectures {
+.courses_topic,
+.lectures {
     margin-bottom: calc(var(--space-1) / 2);
 }
+
 .courses_topic {
     padding: calc(var(--space-1) / 2) 0;
     position: relative;
-    border: 1px dashed var(--primary-light);
+    border: 1px dashed black;
     text-transform: uppercase;
     font-size: 110%;
-
 }
-
 
 .courses_topic:hover,
 .courses_lecture:hover {
-    background-color: var(--primary-light);
-    color: var(--secondary-light);
+    background-color: black;
+    color: white;
 }
 
 .courses_topic:hover::before,
 .courses_lecture:hover::before {
-    color: var(--primary-light);
+    color: black;
 }
 
+/* ========================================================================== */
 
+
+
+/* DATA ATTRIBUTES  ========================================================= */
 [data-collapsed="yes"] {
-    background: var(--primary-light);
-    color: var(--secondary-light);
+    background: black;
+    color: white;
 }
 
 [data-collapsed],
@@ -147,25 +150,25 @@ nav {
 [data-watched="yes"]::before,
 
 [data-completed="yes"]::before {
-    color: var(--primary-light);
+    color: black;
 }
 
 [data-watched="no"]::before,
 [data-completed="no"]::before {
     font-weight: 400;
 }
-[data-watched="yes"]::before,
-[data-completed="yes"]::before{
-    font-weight: 900;
-    color:var(--sepia);
-}
 
+[data-watched="yes"]::before,
+[data-completed="yes"]::before {
+    font-weight: 900;
+    color: var(--sepia);
+}
 
 [data-watched="yes"]:hover::before,
 [data-completed="yes"]:hover::before,
 [data-watched="no"]:hover::before,
 [data-completed="no"]:hover::before {
-    color: var(--secondary-light);
+    color: white;
 }
 
 [data-visible="no"] {
@@ -178,12 +181,12 @@ nav {
 
 [data-collapsed="yes"]::after {
     content: "-";
-    color: var(--secondary-light)!important;
+    color: white !important;
 }
 
 [data-collapsed="yes"]::after,
 [data-collapsed="no"]::after {
-    color: var(--primary-light);
+    color: black;
     position: absolute;
     top: calc(50% - calc(1.5rem / 2));
     right: calc(var(--space-1) / 2);
@@ -191,7 +194,7 @@ nav {
 
 [data-target] {
     position: relative;
-    color: var(--primary-light);
+    color: black;
 }
 
 [data-target]>*:hover::after {
@@ -203,127 +206,223 @@ nav {
     font-size: var(--space-2);
 }
 
-/* ====================================================== */
-/* ---------------------  Scrollbar  -------------------- */
-/* ====================================================== */
+/* ========================================================================== */
+
+
+
+/*  Scrollbar =============================================================== */
 
 /* width */
 ::-webkit-scrollbar {
     width: 10px;
-  }
-  
-  /* Track */
-  ::-webkit-scrollbar-track {
-    background: var(--primary-light); 
-  }
-  
-  /* Handle */
-  ::-webkit-scrollbar-thumb {
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+    background: black;
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
     background: var(--sepia);
     max-height: 20px;
 }
 
 /* Handle on hover */
 ::-webkit-scrollbar-thumb:hover {
-    background: var(--secondary-light);
-  }
+    background: white;
+}
 
-  ::-webkit-scrollbar-button {
+::-webkit-scrollbar-button {
     width: 0;
     height: 0;
     display: none;
 }
+
 ::-webkit-scrollbar-corner {
     background-color: transparent;
 }
 
-main{
-    display:flex;
-    flex-direction: column;
-    align-items:center;
+/* ========================================================================== */
+
+
+/* TIME STUFF =============================================================== */
+.time-frame {
+    display: inline-block;
+    /* height:50px; */
+    flex-flow: nowrap;
+    width: 100%;
+}
+
+.time {
+    color: black;
+    height: 50px;
+    width: 100px;
+    display: flex;
+    border: 1px dashed black;
+    float: left;
+    text-align: center;
+    font-family: var(--oswald);
+    text-transform: uppercase;
+    font-weight: bold;
+}
+
+.timebtn {
+    width: 50px;
+    min-width: fit-content;
+    height: 50px;
+    background-color: black;
+    color: white;
+    display: flex;
+    align-items: center;
     justify-content: center;
+    float: left;
+    border-radius: none !important;
+    font-family: var(--oswald);
+    text-transform: uppercase;
+    font-weight: bold;
 }
 
-.btns{
-    display:flex;
+
+.total_time {
+    background-color: white !important;
+    color: black !important;
+    position: relative;
+    border: 1px solid black;
+    border-left: none;
+
+
+}
+
+.total_time:before {
+    content: "~";
+    position: absolute;
+    left: -10px;
+    z-index: 9999;
+    font-size: 40px;
+    color: var(--sepia);
+    transform: rotate(5deg);
+    text-shadow: 2px 2px rgba(0, 0, 0, .5);
+}
+
+
+.timeclock {
+    width: 50px;
+    min-width: fit-content;
+    height: 50px;
+    background-color: white;
+    color: black;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    float: left;
+    border-radius: none !important;
+    border: 1px inset black;
+    font-family: var(--oswald);
+    text-transform: uppercase;
+    font-weight: bold;
+}
+
+/* ========================================================================== */
+
+
+
+/* Speed buttons ============================================================ */
+.btns {
+    display: flex;
     flex-direction: row;
+    font-family: var(--oswald);
+    text-transform: uppercase;
+    font-weight: bold;
 
 }
 
-.darkbtn{
-    background-color: var(--primary-light);
-    color: var(--primary-dark);
+.speedbtn {
+    background-color: black;
+    color: white;
     font-family: var(--oswald);
     font-size: var(--space-2);
-    padding: var(--space-1);
-    margin-top: var(--space-1);;
+    margin-top: var(--space-1);
+    height: 50px;
+    width: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
 }
 
-.speed{
-    color: var(--primary-light)!important;
-    font-family: var(--oswald);
+.speed {
+    color: black !important;
     margin-top: var(--space-1);
-    border: 1px dashed var(--primary-light);
-    width:100px!important;
-    max-width:fit-content;
+    border: 1px dashed black;
+    width: 100px !important;
+    max-width: fit-content;
     display: inline-block;
     text-align: center;
-
+    font-family: var(--oswald);
+    text-transform: uppercase;
+    font-weight: bold;
+    height: 50px;
 }
 
-.darkbtn:hover, .darkbtn:active, .darkbtn:focus{
+.speedbtn:hover,
+.speedbtn:active,
+.speedbtn:focus,
+.timebtn:hover,
+.timebtn:active,
+.timebtn:focus {
     background-color: var(--sepia);
-    color:var(--primary-light);
-
+    color: black;
+    cursor: pointer;
 }
 
+/* ========================================================================== */
 
-.oswald{
+
+/* Typography =============================================================== */
+
+.oswald {
     font-family: "Oswald", sans-serif;
     font-size: bold;
     text-transform: uppercase;
 }
 
-.main-title{
-    font-size: var(--space-2); 
-    margin-bottom: var(--space-4);  
+.main-title {
+    font-size: var(--space-2);
+    margin-bottom: var(--space-4);
 }
 
-.sepia{
-    color:var(--sepia);
+.sepia {
+    color: var(--sepia);
 }
 
-.time-frame{
-    display:inline-block;
-    height:50px;
-    flex-flow: nowrap;
+/* ========================================================================== */
+
+
+
+
+/* Tooltip ================================================================== */
+
+.tooltip {
+    position: relative;
+  }
+
+.tooltip .tooltiptext {
+    visibility: hidden;
     width: 100%;
-}
-
-.time{
-    color:var(--primary-light);
-    padding:10px 20px;
-    width: fit-content!important;
-    height: 50px;
-    float: left;
-    border: 1px dashed var(--primary-light);
-}
-
-.go{
-    width: 50px;
-    height: 50px;
-    background-color: var(--primary-light);
-    color: var(--primary-dark);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    float: left;
-    border-radius:none!important;
-    border: 1px dashed var(--primary-light);
-}
-
-
-
-.ml-2{
-    margin-left:var(--space-2)
-}
+    background-color: black;
+    color: #fff;
+    text-align: center;
+    padding: 5px 10px;
+  
+    /* Position the tooltip */
+    position: absolute;
+    top:-50px;
+    z-index: 1;
+    line-height: 200%;
+  }
+  
+  .tooltip:hover .tooltiptext {
+    visibility: visible;
+  }
+/* ========================================================================== */

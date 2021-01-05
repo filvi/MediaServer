@@ -55,7 +55,7 @@ function set_speed(val){
 }
 
 //  function to convert seconds into HH:mm:ss ==================================
-function secondsToHms(d) {
+function seconds_to_parsed(d) {
     d = Number(d);
     var h = Math.floor(d / 3600);
     var m = Math.floor(d % 3600 / 60);
@@ -68,7 +68,7 @@ function secondsToHms(d) {
 }
 
 // convert back to seconds from the time format ================================
-function hmsToSeconds(d) {
+function parsed_to_second(d) {
     timelist = d.split(":");
     var h = timelist[0];
     var m = timelist[1];
@@ -80,49 +80,81 @@ function hmsToSeconds(d) {
 
 // Update the current time of the video ========================================
 function update_time(){
-    var display_time = document.getElementById('time');
+    // get current video playing -----------------------------------------------
     var vid = document.getElementById("video");
+
+    // get input for time travel -----------------------------------------------
+    var display_time = document.getElementById('time');
+
+    // Populate the total time of the video ------------------------------------
+    var total_time = document.getElementById("total_time");
+    total_time.innerText = seconds_to_parsed(vid.duration);
+    
+    // get the button GO ------------------------------------------------------- 
+    var display_time_go = document.getElementById("go");
+
+
+    // Update the timer in the input every one second --------------------------
     var time_interval = setInterval(()=>{
-            parsed_time = secondsToHms(vid.currentTime);
+            parsed_time = seconds_to_parsed(vid.currentTime);
             display_time.value = parsed_time;
     }, 1000)
 
+    // bind the arrow keys to time travel ----------------------------------
+    document.onkeydown = checkKey;
+
+    // Remove the updating while focusing the input ----------------------------
     display_time.addEventListener('focus', (event) => {
         clearInterval(time_interval);
+        // UNbind the arrow keys to time travel --------------------------------
+        document.onkeydown = null;
     });
     display_time.addEventListener('focusin', (event) => {
         clearInterval(time_interval);
+        // UNbind the arrow keys to time travel --------------------------------
+        document.onkeydown = null;
     });
 
+    // Update again the input 3 sec after focus out ----------------------------
     display_time.addEventListener('focusout', (event) => {
+        
+        // bind the arrow keys to time travel ----------------------------------
+        document.onkeydown = checkKey;
+
+        // Updates after 3 seconds ---------------------------------------------
         setTimeout(()=>{
             time_interval = setInterval(()=>{
-                parsed_time = secondsToHms(vid.currentTime);
+                parsed_time = seconds_to_parsed(vid.currentTime);
                 display_time.value = parsed_time;
                 }, 1000)
         }, 3000)
     });
 
-
-    var display_time_go = document.getElementById("go");
-
+    
+    // on clicking GO goto the desidered time ----------------------------------
     go.addEventListener("click", (event)=>{
         event.preventDefault();
-        let time_to_go = hmsToSeconds(display_time.value)
+        let time_to_go = parsed_to_second(display_time.value)
         vid.currentTime = time_to_go;
     })
 
+    // binds the Enter and NumpadEnter Key to do the search --------------------
     document.addEventListener('keypress', function (event) {
-     
         if (event.code == "Enter" || event.code == "NumpadEnter" ) {
-            if(!document.getElementById('video').playing){
-                document.getElementById('video').play();
+            // if is not playing start the video -------------------------------
+            if(!vid.playing){
+                vid.play();
             }
             return display_time_go.click()
-            // if is not playing start the video ===================================
+        }else if (event.code == "Space"){
+            if(!vid.playing){
+                vid.play();
+            } else {
+                vid.pause();
+            }
         }
     })
-    
+
 }
 
 
@@ -134,6 +166,28 @@ Object.defineProperty(HTMLMediaElement.prototype, 'playing', {
 })
 
 
+
+// bind the arrow keys to +-5 sec +-10 sec if not input mode ---------------
+function checkKey(e) {
+    var vid = document.getElementById("video");
+    e = e || window.event;
+    if (e.keyCode == '38') {
+        vid.currentTime += 10;
+    } else if (e.keyCode == '40') {
+        vid.currentTime -= 10;
+    } else if (e.keyCode == '37') {
+        vid.currentTime -= 5;
+    } else if (e.keyCode == '39') {
+        vid.currentTime += 5;
+    } 
+}
+
+
+// set the functionalities for the arrow
+function time_travel(seconds){
+    var vid = document.getElementById("video");
+    vid.currentTime += seconds;
+}
 
 
 // Speed up EVERY VIDEO in the page
