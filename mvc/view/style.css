@@ -262,7 +262,6 @@ main{
 .speed{
     color: var(--primary-light)!important;
     font-family: var(--oswald);
-    font-size: var(--space-2);
     margin-top: var(--space-1);
     border: 1px dashed var(--primary-light);
     width:100px!important;

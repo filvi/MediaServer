@@ -13,7 +13,7 @@ $lecture =  str_replace(".", " ",str_replace(".mp4", "", $title[3]));
 $video=<<<VIDEO
 <h1 class="oswald main-title"> $course <span class="sepia main-title">~</span> $topic <span class="sepia main-title">~</span> $lecture</h1>
 
-<video controls autoply id="video" onplay="update_time()">
+<video controls autoplay id="video" onplay="update_time()">
 <source src="$path">
 </video>
 <br>

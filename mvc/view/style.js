@@ -25,7 +25,7 @@ function toggle_topic(topic_name) {
 // fetch and display video from the script at mvc/components/video.php =========
 function get_video(id, course, topic, lecture){
     lecture = lecture.replace(" ", ".")
-    path = `mvc/components/video.php?path=Master/${course}/${topic}/${lecture}.mp4`
+    path = `mvc/components/video.php?path=Videos/${course}/${topic}/${lecture}.mp4`
     var target = document.getElementById(id)
     target.dataset.watched = "yes";
     var xhttp = new XMLHttpRequest();
@@ -112,15 +112,14 @@ function update_time(){
         vid.currentTime = time_to_go;
     })
 
-    document.addEventListener('keydown', function (event) {
+    document.addEventListener('keypress', function (event) {
      
-        
-        if (event.keyCode == 13) {
+        if (event.code == "Enter" || event.code == "NumpadEnter" ) {
+            if(!document.getElementById('video').playing){
+                document.getElementById('video').play();
+            }
             return display_time_go.click()
-        }
-        // if is not playing start the video ===================================
-        if(!document.getElementById('video').playing){
-            document.getElementById('video').play();
+            // if is not playing start the video ===================================
         }
     })
     

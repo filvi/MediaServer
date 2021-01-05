@@ -5,14 +5,20 @@ The structure is the following
 
 ```
 ├Videos
-├----Topic.01
-|    └----Lecture.01.mp4
-|    └----Lecture.02.mp4
-|    └----Lecture.03.mp4
-├----Topic.02
-|    └----Lecture.01.mp4
-|    └----Lecture.02.mp4
-|    └----Lecture.03.mp4
+├----Course.01
+|    └----Lecture.1
+|    |      └----Lecture.01.mp4
+|    |      └----Lecture.02.mp4
+|    └----Lecture.2
+|           └----Lecture.01.mp4
+└----Course.02
+     └----Lecture.1
+     |      └----Lecture.02.mp4
+     |      └----Lecture.03.mp4
+     └----Lecture.2
+            └----Lecture.02.mp4
+            └----Lecture.03.mp4
+
 ```
 
 
