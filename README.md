@@ -16,7 +16,7 @@ The structure is the following
 ```
 
 
-## Potential Issue (i need to fix)
+## Potential Issue (I need to fix)
 1. The name of the file and the folders can't contain spaces or symbols now, maybe in the future version 
 2. Totally not responsive
 3. Weird behaviour when changing time somethimes (need to investigate this)
