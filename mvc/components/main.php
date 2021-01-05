@@ -1,6 +1,8 @@
 <main id="main">
 
 <?php
+
+
 // foreach ($serie as $value){
 //     $stagioni = glob($value . '/*');
 //     foreach ($stagioni as $stagione){

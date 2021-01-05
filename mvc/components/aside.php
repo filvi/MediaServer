@@ -10,32 +10,33 @@ foreach ($items as $item){
     
     echo<<< EOE
         <div>
-            <h1 class="serie_name">$item_name</h1>
+            <h1 class="course_name">$item_name</h1>
         </div>
         
         EOE;
 
     foreach ($lectures as $lecture){
-        $season_index = strripos($lecture, '/');
-        $season_name = substr($lecture, $season_index + 1);
-        $season_name_spaced = str_replace('.', ' ', $season_name);
+        $topic_index = strripos($lecture, '/');
+        $topic_name = substr($lecture, $topic_index + 1);
+        $topic_name_spaced = str_replace('.', ' ', $topic_name);
 
     
         echo<<<EOT
-            <div class="season">
-                <!-- staating Season 1 -->
-                <a href="#" data-clicked="none"  onclick="toggle_season('$item_name - $season_name_spaced')" data-target="$item_name - $season_name_spaced">
-                    <div class="series_season" data-season="$item_name - $season_name_spaced" data-collapsed="no" data-completed="no">$season_name_spaced</div>
+            <div class="topic">
+                <!-- staating topic 1 -->
+                <a href="#" data-clicked="none"  onclick="toggle_topic('$item_name - $topic_name_spaced')" data-target="$item_name - $topic_name_spaced">
+                    <div class="courses_topic" data-topic="$item_name - $topic_name_spaced" data-collapsed="no" data-completed="no">$topic_name_spaced</div>
                 </a>
-                <div class="episodes">
+                <div class="lectures">
         EOT;
-        $episodes = glob($lecture . '/*');
-        foreach ($episodes as $episode) {
-            $episode_index = strripos($episode, "/");
-            $episode_name = str_replace('.', ' ', substr(substr($episode, $episode_index + 1 ),0,-4));
+        $lectures = glob($lecture . '/*');
+        foreach ($lectures as $lecture) {
+            $lecture_index = strripos($lecture, "/");
+            $lecture_path = substr(substr($lecture, $lecture_index + 1 ),0,-4);
+            $lecture_name = str_replace('.', ' ', substr(substr($lecture, $lecture_index + 1 ),0,-4));
 
             echo<<<EOF
-                    <div class="series_episode" onclick="get_video(this.id, '$item_name', '$season_name', '$episode_name')" id="$item_name - $season_name_spaced - $episode_name"  data-id="$item_name - $season_name_spaced" data-name="$item_name - $season_name_spaced - $episode_name" data-watched="no" data-visible="no">$episode_name</div>
+                    <div class="courses_lecture" onclick="get_video(this.id, '$item_name', '$topic_name', '$lecture_path')" id="$item_name - $topic_name_spaced - $lecture_name"  data-id="$item_name - $topic_name_spaced" data-name="$item_name - $topic_name_spaced - $lecture_name" data-watched="no" data-visible="no">$lecture_name</div>
                     
                 EOF;
         }
@@ -44,7 +45,7 @@ foreach ($items as $item){
     }
 }
         ?>
-        <!-- finishing Season 1 -->
+        <!-- finishing topic 1 -->
 
     </nav>
 </aside>
