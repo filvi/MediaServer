@@ -190,6 +190,14 @@ function time_travel(seconds){
 }
 
 
+
+function set_playback_speed(){
+    vid = document.getElementById("video");
+    button = document.getElementById("speedbtn");
+    speed = document.getElementById("speed")
+    vid.playbackRate = speed.value ;
+}
+
 // Speed up EVERY VIDEO in the page
 // var vid = document.querySelectorAll("video");
 // vid.forEach((v)=>{v.playbackRate = 1})      // reset

@@ -9,7 +9,7 @@
     --space-4: calc(1.5rem * 1.5 * 1.5 * 1.5);
 
     /* font  */
-    --roboto: 'Roboto Slab', serif;
+    --open-sans: 'Open Sans', sans-serif;
     --oswald: 'Oswald', sans-serif;
 }
 
@@ -50,11 +50,29 @@ aside {
     width: 15vw;
     overflow-y: scroll;
     padding: var(--space-1);
+    border-right:1px dashed black;
+}
+
+#sidebar{
+    width: 15vw;
+    float: right;
+    padding: var(--space-1);
+    border-left:1px dashed black;
+    height: 100%;
+}
+
+textarea{
+    font-family: var(--oswald);
+    text-transform: uppercase;
+    font-weight: bold;
+    font-size:14px;
+    width: 100%;
+    resize: vertical;
 }
 
 main {
     margin-left: 15vw;
-    width: 85vw;
+    width: 70vw;
     padding: var(--space-1);
 }
 
@@ -89,6 +107,16 @@ nav {
 
 
 /* Sidebar Stuff ============================================================ */
+.side-title{
+    font-size: var(--space-2);
+    margin-bottom: var(--space-1);
+    z-index: 0!important;
+}
+
+.checkpoints{
+    font-size: var(--space-1);
+    vertical-align: top;
+}
 .courses_lecture {
     border-bottom: 1px solid transparent;
     white-space: pre-wrap;
@@ -100,11 +128,12 @@ nav {
 
 
 .courses_topic,
+.notes,
 .lectures {
     margin-bottom: calc(var(--space-1) / 2);
 }
 
-.courses_topic {
+.courses_topic, .notes{
     padding: calc(var(--space-1) / 2) 0;
     position: relative;
     border: 1px dashed black;
@@ -112,12 +141,14 @@ nav {
     font-size: 110%;
 }
 
+.notes:hover,
 .courses_topic:hover,
 .courses_lecture:hover {
     background-color: black;
     color: white;
 }
 
+.notes:hover::before,
 .courses_topic:hover::before,
 .courses_lecture:hover::before {
     color: black;
@@ -218,9 +249,9 @@ nav {
 }
 
 /* Track */
-::-webkit-scrollbar-track {
+/* ::-webkit-scrollbar-track {
     background: black;
-}
+} */
 
 /* Handle */
 ::-webkit-scrollbar-thumb {
@@ -299,10 +330,10 @@ nav {
     position: absolute;
     left: -10px;
     z-index: 9999;
-    font-size: 40px;
+    font-size: 50px;
     color: var(--sepia);
-    transform: rotate(5deg);
-    text-shadow: 2px 2px rgba(0, 0, 0, .5);
+    /* transform: rotate(5deg); */
+    
 }
 
 
@@ -379,6 +410,78 @@ nav {
 /* ========================================================================== */
 
 
+
+/* Notes stuff ============================================================== */
+#notes{
+    border:1px dashed black;
+    min-height:100px;
+    padding:5px 10px; 
+    position: relative;
+}
+#notes_container:before{
+    content: "";
+    padding: var(--space-1);
+    background-color: var(--sepia);
+    position: absolute;
+    bottom:10px;
+    left:-10px;
+
+}
+
+#notes_container{
+    position: relative;
+
+}
+#confirm_note{
+    background-color: black;
+    position: absolute;
+    top:-20px;
+    right: -20px;
+    color:white;
+    display: inline-block;
+    width: auto;
+    padding: calc(var(--space-1) / 2);
+    margin: auto;
+}
+
+#confirm_note:hover, confirm_note:focus{
+    cursor: pointer;
+    background-color: var(--sepia);
+    color:black;
+}
+
+.note-item{
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    overflow: hidden;
+    padding: calc(var(--space-1) / 2);
+    margin-bottom: calc(var(--space-1) / 2);
+    border: 1px dashed black;
+    text-transform: uppercase;
+    font-size: 100%;
+}
+
+.note-item:hover{
+    background-color: black;
+    color: white;
+}
+
+.note-item::before{
+    content: "\f111";
+    font-family: 'Font Awesome\ 5 Free';
+    font-size:50%;
+    vertical-align: top;
+    padding-right:calc(var(--space-1) / 2);
+    color: var(--sepia);
+}
+
+.note-item:hover:before,.note-item:active:before {
+    color:white;
+}
+/* ========================================================================== */
+
+
+
 /* Typography =============================================================== */
 
 .oswald {
@@ -409,20 +512,24 @@ nav {
 
 .tooltip .tooltiptext {
     visibility: hidden;
-    width: 100%;
+    width: 150%;
     background-color: black;
     color: #fff;
     text-align: center;
     padding: 5px 10px;
-  
+    font-family: var(--oswald)!important;
     /* Position the tooltip */
     position: absolute;
-    top:-50px;
+    top:-80px;
     z-index: 1;
     line-height: 200%;
+
+    border:1px dashed white;
   }
   
   .tooltip:hover .tooltiptext {
     visibility: visible;
   }
 /* ========================================================================== */
+
+
