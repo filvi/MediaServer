@@ -80,7 +80,6 @@ class Database {
     public static function insert_viewed($course, $topic, $lecture){
         $conn = self::conn();
         if ($stmt = $conn->prepare("INSERT INTO `viewed` (`COURSE`, `TOPIC`, `LECTURE`) VALUES (?,?,?);")){
-            echo "INSERT INTO `viewed` (`COURSE`, `TOPIC`, `LECTURE`) VALUES ($course, $topic, $lecture)";
             $stmt->bind_param("sss",$course, $topic, $lecture);
             $stmt->execute();
         } else{

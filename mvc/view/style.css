@@ -33,8 +33,10 @@
     font-size: 1rem;
 }
 
-input{
+input:focus{
     border-radius:none!important;
+    outline:none!important;
+    border-image:initial!important;
 }
 
 a {
@@ -82,26 +84,26 @@ nav {
 
 
 
-.courseslecture {
+.courses_lecture {
     border-bottom: 1px solid transparent;
     white-space: pre-wrap;
 
 }
 
 
-.courseslecture:hover {
+.courses_lecture:hover {
     cursor: pointer;
 }
 
-/* .courseslecture:hover{
+/* .courses_lecture:hover{
     transform:translateX()
 } */
 
 
-.coursestopic, .lectures {
+.courses_topic, .lectures {
     margin-bottom: calc(var(--space-1) / 2);
 }
-.coursestopic {
+.courses_topic {
     padding: calc(var(--space-1) / 2) 0;
     position: relative;
     border: 1px dashed var(--primary-light);
@@ -111,14 +113,14 @@ nav {
 }
 
 
-.coursestopic:hover,
-.courseslecture:hover {
+.courses_topic:hover,
+.courses_lecture:hover {
     background-color: var(--primary-light);
     color: var(--secondary-light);
 }
 
-.coursestopic:hover::before,
-.courseslecture:hover::before {
+.courses_topic:hover::before,
+.courses_lecture:hover::before {
     color: var(--primary-light);
 }
 
@@ -254,7 +256,20 @@ main{
     font-family: var(--oswald);
     font-size: var(--space-2);
     padding: var(--space-1);
-    margin: var(--space-1);;
+    margin-top: var(--space-1);;
+}
+
+.speed{
+    color: var(--primary-light)!important;
+    font-family: var(--oswald);
+    font-size: var(--space-2);
+    margin-top: var(--space-1);
+    border: 1px dashed var(--primary-light);
+    width:100px!important;
+    max-width:fit-content;
+    display: inline-block;
+    text-align: center;
+
 }
 
 .darkbtn:hover, .darkbtn:active, .darkbtn:focus{
@@ -289,11 +304,10 @@ main{
 .time{
     color:var(--primary-light);
     padding:10px 20px;
-    width: calc(100% - 50px);
+    width: fit-content!important;
     height: 50px;
     float: left;
     border: 1px dashed var(--primary-light);
-    
 }
 
 .go{
@@ -309,3 +323,8 @@ main{
     border: 1px dashed var(--primary-light);
 }
 
+
+
+.ml-2{
+    margin-left:var(--space-2)
+}

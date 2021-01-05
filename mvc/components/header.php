@@ -7,6 +7,8 @@
     <link href="https://fonts.googleapis.com/css?family=Oswald|Roboto+Slab&display=swap" rel="stylesheet">
     <link href="https://use.fontawesome.com/releases/v5.0.1/css/all.css" rel="stylesheet">
     <script type="text/javascript" src="./mvc/view/style.js"></script>
+    <link rel="icon" href="mvc/view/img/logo/favicon.ico">
+
 
     <title>MediaServer</title>
 </head>
