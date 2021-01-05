@@ -1,7 +1,7 @@
-#MediaServer
+# MediaServer
 This wants to be a project to access my video files and serve it via LAN
 
-The structure is te following
+The structure is the following
 
 ```
 ├Videos
@@ -16,7 +16,7 @@ The structure is te following
 ```
 
 
-##Potential Issue (i need to fix)
+## Potential Issue (i need to fix)
 1. The name of the file and the folders can't contain spaces or symbols now, maybe in the future version 
 2. Totally not responsive
 3. Weird behaviour when changing time somethimes (need to investigate this)
