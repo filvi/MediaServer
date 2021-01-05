@@ -59,6 +59,7 @@ aside {
     padding: var(--space-1);
     /* border-left:1px dashed black; */
     height: 100%;
+    padding-right: var(--space-2);
 }
 
 textarea{
@@ -469,6 +470,7 @@ nav {
     border: 1px dashed black;
     text-transform: uppercase;
     font-size: 100%;
+    position: relative;
 }
 
 .note-item:hover{
@@ -488,6 +490,19 @@ nav {
 .note-item:hover:before,.note-item:active:before {
     color:white;
 }
+
+.del{
+    position: absolute;
+    background-color: var(--sepia);
+    border-radius: 10px;
+    right:-10;
+}
+
+.del {
+    top:-10;  
+}
+
+
 /* ========================================================================== */
 
 
