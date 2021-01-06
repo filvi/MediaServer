@@ -33,12 +33,27 @@ function get_video(id, course, topic, lecture){
     xhttp.onreadystatechange = function() {
     if (this.readyState == 4 && this.status == 200) {
         document.getElementById("main").innerHTML = this.responseText;
+        get_sidebar(course, topic, lecture);
+        enable_notes();
     }
   };
   xhttp.open("GET", path, true);
   xhttp.send();
 } // ===========================================================================
 
+// fetch and display video from the script at mvc/components/video.php =========
+function get_sidebar(course, topic, lecture){
+    lecture = lecture.replace(" ", ".")
+    path = `mvc/components/sidebar.php?course${course}&topic=${topic}&lecture=${lecture}`
+    let xhttp = new XMLHttpRequest();
+    xhttp.onreadystatechange = function() {
+    if (this.readyState == 4 && this.status == 200) {
+        document.getElementById("sidebar").innerHTML += this.responseText;
+    }
+  };
+  xhttp.open("GET", path, true);
+  xhttp.send();
+} // ===========================================================================
 
 
 // Change video speed BTN ======================================================
@@ -279,6 +294,14 @@ function show_dialog_delete(parent, note, del_id, course, topic, lecture, time){
             }
         });
     });
+} // ===========================================================================
+
+// enable the saving of the note ===============================================
+function enable_notes(){
+    document.getElementById('confirm_note').addEventListener("click" , (e)=>{
+        var note = document.getElementById('insert_note').value;
+        insert_note_in_db()
+    }) 
 } // ===========================================================================
 
 

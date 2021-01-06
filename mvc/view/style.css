@@ -51,6 +51,8 @@ aside {
     overflow-y: scroll;
     padding: var(--space-1);
     border-right:1px dashed black;
+    font-weight:bold;
+    background-color: white;
 }
 
 #sidebar{
@@ -58,14 +60,14 @@ aside {
     float: right;
     padding: var(--space-1);
     /* border-left:1px dashed black; */
-    height: 100%;
+    height: calc(100% -  var(--space-1) - var(--space-1));
     padding-right: var(--space-2);
+    background-color: white;
 }
 
 textarea{
     font-family: var(--oswald);
     text-transform: uppercase;
-    font-weight: bold;
     font-size:14px;
     width: 100%;
     resize: vertical;
@@ -98,7 +100,6 @@ main {
 
 nav {
     font-family: var(--oswald);
-    font-weight: bold;
     margin-top: var(--space-2);
     text-transform: uppercase;
 }
@@ -429,11 +430,12 @@ nav {
 
 
 /* Notes stuff ============================================================== */
-#notes{
+#insert_note{
     border:1px dashed black;
     min-height:100px;
     padding:5px 10px; 
     position: relative;
+    z-index:1;
 }
 #notes_container:before{
     content: "";
@@ -442,7 +444,6 @@ nav {
     position: absolute;
     bottom:10px;
     left:-10px;
-
 }
 
 #notes_container{
@@ -459,6 +460,7 @@ nav {
     width: auto;
     padding: calc(var(--space-1) / 2);
     margin: auto;
+    z-index: 2;
 }
 
 #confirm_note:hover, confirm_note:focus{
@@ -490,6 +492,7 @@ nav {
     content: "\f111";
     font-family: 'Font Awesome\ 5 Free';
     font-size:50%;
+    font-weight:bold;
     vertical-align: top;
     padding-right:calc(var(--space-1) / 2);
     color: var(--sepia);
@@ -584,3 +587,27 @@ nav {
     margin: var(--space-4) auto;
 }
     
+
+/* UI Button Jquery overwrite =============================================== */
+.ui-button, .i-widget{
+    background-color: black !important;
+    color:white!important;
+}
+
+
+.ui-widget{
+    font-family: var(--oswald)!important;
+    text-transform:uppercase;
+}
+
+.ui-dialog-titlebar{
+    color: white!important;
+    background-color: black!important;
+}
+
+.ui-corner-all, .ui-corner-bottom, .ui-corner-left, .ui-corner-bl{
+    border-bottom-left-radius:none !important;
+    border-bottom-right-radius:none !important;
+    border-top-right-radius:none !important;
+    border-top-right-radius:none !important;
+}
