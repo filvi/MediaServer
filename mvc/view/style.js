@@ -1,5 +1,5 @@
 
-// Dropdown toggle system
+// Dropdown toggle system ======================================================
 function toggle_topic(topic_name) {
     let lecture = document.querySelectorAll(`[data-id="${topic_name}"]`);
     for (let i = 0; i < lecture.length; i++) {
@@ -19,16 +19,17 @@ function toggle_topic(topic_name) {
         topic.setAttribute("data-collapsed", "no");
     }
     topic.setAttribute
-}
+} // ===========================================================================
+
 
 
 // fetch and display video from the script at mvc/components/video.php =========
 function get_video(id, course, topic, lecture){
     lecture = lecture.replace(" ", ".")
     path = `mvc/components/video.php?path=Videos/${course}/${topic}/${lecture}.mp4`
-    var target = document.getElementById(id)
+    let target = document.getElementById(id)
     target.dataset.watched = "yes";
-    var xhttp = new XMLHttpRequest();
+    let xhttp = new XMLHttpRequest();
     xhttp.onreadystatechange = function() {
     if (this.readyState == 4 && this.status == 200) {
         document.getElementById("main").innerHTML = this.responseText;
@@ -36,8 +37,9 @@ function get_video(id, course, topic, lecture){
   };
   xhttp.open("GET", path, true);
   xhttp.send();
+} // ===========================================================================
 
-}
+
 
 // Change video speed BTN ======================================================
 function set_speed(val){ 
@@ -52,7 +54,10 @@ function set_speed(val){
         vid.playbackRate -= 0.05;
         document.getElementById('speed').value = vid.playbackRate.toFixed(2);
     }
-}
+} // ===========================================================================
+
+
+
 
 //  function to convert seconds into HH:mm:ss ==================================
 function seconds_to_parsed(d) {
@@ -65,7 +70,10 @@ function seconds_to_parsed(d) {
     var mDisplay = m >= 10 ? `${m}` : `0${m}`;
     var sDisplay = s >= 10 ? `${s}` : `0${s}`;
     return `${hDisplay}:${mDisplay}:${sDisplay}`; 
-}
+} // ===========================================================================
+
+
+
 
 // convert back to seconds from the time format ================================
 function parsed_to_second(d) {
@@ -76,7 +84,10 @@ function parsed_to_second(d) {
 
     seconds = parseInt(h*3600) + parseInt(m*60) + parseInt(s);
     return seconds;
-}
+} // ===========================================================================
+
+
+
 
 // Update the current time of the video ========================================
 function update_time(){
@@ -155,7 +166,9 @@ function update_time(){
         }
     })
 
-}
+} // ===========================================================================
+
+
 
 
 // defining the playing property for videos and audio if is playing ============
@@ -163,11 +176,11 @@ Object.defineProperty(HTMLMediaElement.prototype, 'playing', {
     get: function(){
         return !!(this.currentTime > 0 && !this.paused && !this.ended && this.readyState > 2);
     }
-})
+}) // ==========================================================================
 
 
 
-// bind the arrow keys to +-5 sec +-10 sec if not input mode ---------------
+// FIXME bind the arrow keys to +-5 sec +-10 sec if not input mode =============
 function checkKey(e) {
     var vid = document.getElementById("video");
     e = e || window.event;
@@ -180,29 +193,97 @@ function checkKey(e) {
     } else if (e.keyCode == '39') {
         vid.currentTime += 5;
     } 
-}
+} // ===========================================================================
 
 
-// set the functionalities for the arrow
+
+// set the functionalities for the arrow =======================================
 function time_travel(seconds){
     var vid = document.getElementById("video");
     vid.currentTime += seconds;
-}
+} // ===========================================================================
 
 
 
+// Set the playback speed of the video =========================================
 function set_playback_speed(){
     vid = document.getElementById("video");
     button = document.getElementById("speedbtn");
     speed = document.getElementById("speed")
     vid.playbackRate = speed.value ;
-}
+} // ===========================================================================
 
 
+// Goto the time specified in the note =========================================
 function goto_note_time(s){
     vid = document.getElementById('video');
     vid.currentTime = s;
-}
+} // ===========================================================================
+
+
+
+// Delete the note from the sidebar ============================================
+function delete_note(element){
+    
+    // find the ID of the note to delete ---------------------------------------
+    let del_id = element.dataset.del_id;
+    
+    // get the note object -----------------------------------------------------
+    let note = document.querySelector(`[data-note_id="${del_id}"]`)
+    
+    // get the parent of the note to remove it later ---------------------------
+    let parent = document.querySelector(`[data-parent_id="${del_id}"]`)
+    
+    // retrieve some information for AJAX call to remove DB entries ------------
+    let course = note.dataset.note_course;
+    let topic = note.dataset.note_topic;
+    let lecture = note.dataset.note_lecture;
+    let time = note.dataset.note_time;
+    
+    // prompt user for note delition -------------------------------------------
+    show_dialog_delete(parent, note, del_id, course, topic, lecture, time)
+} // ===========================================================================
+
+
+
+// FIXME  AJAX update notes ====================================================
+function update_notes_db(id, course, topic, lecture, time){
+    return `devo ancora fare l'AJAX per update di ` + id, course, topic, lecture, time;
+} // ===========================================================================
+
+
+
+// Open Dialog Jquery UI =======================================================
+function show_dialog_delete(parent, note, del_id, course, topic, lecture, time){
+    
+    var choice = false;
+    $( function() {
+        $( "#dialog-confirm" ).dialog({
+            resizable: false,
+            height: "auto",
+            width: 400,
+            modal: true,
+            buttons: {
+                "Delete note": function() {
+                    choice = true;
+                    $( this ).dialog( "close");
+                    // updates the DB via AJAX -----------------------------------------
+                    update_notes_db(del_id, course, topic, lecture, time);
+                    // remove the actual note ------------------------------------------
+                    parent.removeChild(note);
+                },
+                Cancel: function() {
+                    choice = false;
+                    $( this ).dialog( "close" );
+                }
+            }
+        });
+    });
+} // ===========================================================================
+
+
+
+
 // Speed up EVERY VIDEO in the page
 // var vid = document.querySelectorAll("video");
 // vid.forEach((v)=>{v.playbackRate = 1})      // reset
@@ -217,3 +298,8 @@ function goto_note_time(s){
 //     console.log("Tutte le risorse hanno terminato il caricamento!");
 //   });
 // var cat = localStorage.getItem("myCat");
+
+
+
+
+
