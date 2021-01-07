@@ -26,7 +26,7 @@ if(isset($_GET['lecture'])){
             </div>
         </div>
 
-        <!-- <div class="cursor-pointer" data-parent_id="0">
+        <div class="cursor-pointer" data-parent_id="0">
             <div class="note-item" data-note_id="0" data-note_course="Course Id #" data-note_topic="Topic Id #" data-note_lecture="Lecture Id #" data-note_time="time 4342">
                 <div class="note" onclick="goto_note_time(555)">Cosa importante 1 che devo sapere per fare quella cosa li che non mi ricordo</div>
                 <div class="del" onclick="delete_note(this)" data-del_id="0">
@@ -42,7 +42,7 @@ if(isset($_GET['lecture'])){
                     <i class="fas fa-times-circle"></i>
                 </div>
             </div>
-        </div> -->
+        </div>
 
         
         <div class="cursor-pointer" data-parent_id="2">

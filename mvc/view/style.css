@@ -51,7 +51,7 @@ aside {
     overflow-y: scroll;
     padding: var(--space-1);
     border-right:1px dashed black;
-    font-weight:bold;
+    /* font-weight:bold; */
     background-color: white;
 }
 
@@ -67,7 +67,6 @@ aside {
 
 textarea{
     font-family: var(--oswald);
-    text-transform: uppercase;
     font-size:14px;
     width: 100%;
     resize: vertical;
@@ -101,7 +100,7 @@ main {
 nav {
     font-family: var(--oswald);
     margin-top: var(--space-2);
-    text-transform: uppercase;
+    /* text-transform: uppercase; */
 }
 
 /* ========================================================================== */
@@ -121,11 +120,16 @@ nav {
 }
 .courses_lecture {
     border-bottom: 1px solid transparent;
-    white-space: pre-wrap;
+    white-space: nowrap; 
+    overflow: hidden;
+    text-overflow: ellipsis;
+    text-indent: -2em;
+    padding-left: 2em;
 }
 
 .courses_lecture:hover {
     cursor: pointer;
+    white-space: pre-wrap;
 }
 
 
@@ -139,7 +143,6 @@ nav {
     padding: calc(var(--space-1) / 2) 0;
     position: relative;
     border: 1px dashed black;
-    text-transform: uppercase;
     font-size: 110%;
 }
 
@@ -175,7 +178,7 @@ nav {
 [data-completed]::before {
     content: "\f111";
     font-family: 'Font Awesome\ 5 Free';
-    padding: 0 10px 0 10px;
+    margin: 0 10px 0 10px;
 
 }
 
@@ -474,7 +477,6 @@ nav {
     padding: calc(var(--space-1) / 2);
     margin-bottom: calc(var(--space-1) / 2);
     border: 1px dashed black;
-    text-transform: uppercase;
     font-size: 100%;
 }
 
@@ -597,7 +599,7 @@ nav {
 
 .ui-widget{
     font-family: var(--oswald)!important;
-    text-transform:uppercase;
+    /* text-transform:uppercase; */
 }
 
 .ui-dialog-titlebar{
@@ -610,4 +612,8 @@ nav {
     border-bottom-right-radius:none !important;
     border-top-right-radius:none !important;
     border-top-right-radius:none !important;
+}
+
+#dialog-confirm{
+    display: none;
 }
