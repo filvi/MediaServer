@@ -11,7 +11,7 @@ $course =  str_replace(".", " ",$title[1]);
 $topic =  str_replace(".", " ",$title[2]);
 $lecture =  str_replace(".", " ",str_replace(".mp4", "", $title[3]));
 $video=<<<VIDEO
-<h1 class="oswald main-title"> $course <span class="sepia main-title">~</span> $topic <span class="sepia main-title">~</span> $lecture</h1>
+<h1 class="oswald main-title" id="video_title"> $course <span class="sepia main-title">~</span> $topic <span class="sepia main-title">~</span> $lecture</h1>
 
 <video controls autoplay id="video" onplay="update_time()">
     <source src="$path">
@@ -79,8 +79,22 @@ $video=<<<VIDEO
         <span class="tooltiptext">+0.5<br>speed</span>
         <i class="fas fa-plus"></i>
     </div>
+
+    <div class="speedbtn ml-2 tooltip" onclick="goto('next')">
+        <span class="tooltiptext">Prev. Video</span>
+        <i class="fas fa-step-backward"></i>
+    </div>
+    <div class="speedbtn-accent  mx1px tooltip" onclick="set_done(this)">
+        <span class="tooltiptext">Done</span>
+        <i class="fas fa-check"></i>
+    </div>
+    <div class="speedbtn tooltip" onclick="goto('next')">
+        <span class="tooltiptext">Next Video</span>
+        <i class="fas fa-step-forward"></i>
+    </div>
     <!-- end of BTN SET SPEED -->
 </div>
+
 VIDEO;
 include("../model/Database.php");
 $db = new Database;

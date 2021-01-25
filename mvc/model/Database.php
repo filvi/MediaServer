@@ -89,7 +89,64 @@ class Database {
         $conn->close();
     }
 
+    // =========================================================================
+    // =========================================================================
+    //                          SELECT
+    // =========================================================================
+    // =========================================================================
 
+
+    // get NOTES ===============================================================
+    public static function get_notes($course, $topic, $lecture){
+        $conn = self::conn();
+        if ($stmt = $conn->prepare("SELECT * FROM `notes` WHERE (`COURSE` = ? AND `TOPIC` = ? AND `LECTURE` = ?);")){
+            $stmt->bind_param("sss",$course, $topic, $lecture);
+            $stmt->execute();
+            $result = $stmt->get_result();
+            if($result->num_rows === 0) exit("No rows: $course, $topic, $lecture");
+            while($row = $result->fetch_assoc()) {
+                $id = $row['ID'];
+                $course = $row['COURSE'];
+                $topic = $row['TOPIC'];
+                $lecture = $row['LECTURE'];
+                $time = $row['TIME'];
+                $note = $row['NOTE'];
+
+                echo<<<NOTE
+                <div class="cursor-pointer" data-parent_id="$id">
+                <div class="note-item" data-note_id="$id" data-note_course="$course" data-note_topic="$topic" data-note_lecture="$lecture" data-note_time="$time">
+                    <div class="note" onclick="goto_note_time($time)">$note</div>
+                    <div class="del" onclick="delete_note(this)" data-del_id="$id">
+                        <i class="fas fa-times-circle"></i>
+                    </div>
+                </div>
+                </div>
+                NOTE;
+
+              }
+
+        } else{
+            $error = $conn->errno . ' ' . $conn->error;
+            echo $error; 
+        }
+        $conn->close();
+    }
+
+
+
+
+        // insert VIEWED =======================================================
+        public static function delete_notes($del_id){
+            $conn = self::conn();
+            if ($stmt = $conn->prepare("DELETE FROM `notes` WHERE `ID` = ?;")){
+                $stmt->bind_param("d",$del_id);
+                $stmt->execute();
+            } else{
+                $error = $conn->errno . ' ' . $conn->error;
+                echo $error; 
+            }
+            $conn->close();
+        }
 
 
 }
