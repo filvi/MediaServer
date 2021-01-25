@@ -25,7 +25,7 @@ The structure is the following
 ## Known Issue (currently fixing)
 1. The name of the file and the folders can't contain spaces or symbols now, maybe in the future version 
 2. Totally not responsive
-3. Weird behaviour when changing time somethimes (need to investigate this)
+3. ~~Weird behaviour when changing time sometimes (need to investigate this)~~
 4. ~~Set speed not working~~
 5. Don't keep track of viewed files and completed Topics
 6. I have to finish the init script to initialize the Database 
