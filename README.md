@@ -28,15 +28,16 @@ The structure is the following
 3. ~~Weird behaviour when changing time sometimes (need to investigate this)~~
 4. ~~Set speed not working~~
 5. Don't keep track of viewed files and completed Topics
-6. I have to finish the init script to initialize the Database 
-7. Make an "installation" page for the first time one use it
+6. ~~I have to finish the init script to initialize the Database~~ 
+7. ~~Make an "installation" page for the first time one use it~~
 8. ~~Add tooltip for Go and Speed~~
-9. Fix z-index bugged with ~ before on current_time|total_time
+9. ~~Fix z-index bugged with ~ before on current_time|total_time~~
 10. ~~Keypress conflict somethimes makes the website crash~~
-~~11. AJAX call for creating, deleting notes~~
-12. Store the last viewed videos in homepage with links
-13. Configure next, previous video button
-14. Mark as completed the video already seen
+11. ~~AJAX call for creating, deleting notes~~
+     1. Render properly once note is saved
+13. Store the last viewed videos in homepage with links
+14. Configure next, previous video button
+15. Mark as completed the video already seen
 
 
 
